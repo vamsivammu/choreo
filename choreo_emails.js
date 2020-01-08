@@ -32,7 +32,9 @@ function send_emails_rec(index){
         console.log('done')
         return
     }
-    var ticket_data = [{id:4,}]
+    var roll_num = rows[index].roll_num;
+    var name = rows[index].name;
+    var email = roll_num.toLowerCase() + "@smail.iitm.ac.in"
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -71,5 +73,5 @@ function send_emails_rec(index){
 var file = xlsx.readFile('Choreo.xlsx')
 var sheetnames = file.SheetNames
 rows = xlsx.utils.sheet_to_json(file.Sheets[sheetnames[0])
-sent_mails(0)
+send_emails_rec(0)
 
