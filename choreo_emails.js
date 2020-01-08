@@ -27,7 +27,7 @@ function send_emails_rec(index){
     });
     
     let html_src = ejs.render(fs.readFileSync(__dirname + '/views/ikollege.ejs', 'utf8'), {
-       roll_num: roll_num,
+       roll_no: roll_num,
        name: name,
        type: 'Gallery'
     });
@@ -56,5 +56,6 @@ function send_emails_rec(index){
 var file = xlsx.readFile('Choreo.xlsx')
 var sheetnames = file.SheetNames
 rows = xlsx.utils.sheet_to_json(file.Sheets[sheetnames[0]])
+// console.log(rows)
 send_emails_rec(0)
 
