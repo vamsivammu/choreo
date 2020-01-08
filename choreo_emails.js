@@ -55,6 +55,6 @@ function send_emails_rec(index){
 
 var file = xlsx.readFile('Choreo.xlsx')
 var sheetnames = file.SheetNames
-rows = xlsx.utils.sheet_to_json(file.Sheets[sheetnames[0])
+rows = xlsx.utils.sheet_to_json(file.Sheets[sheetnames[0]])
 send_emails_rec(0)
 
