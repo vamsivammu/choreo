@@ -1,27 +1,10 @@
-const express = require('express');
-const config = require('../config');
-const sgMail = require('@sendgrid/mail');
 const ejs = require('ejs');
-const fetch = require('node-fetch');
 const fs = require('fs');
-const QRCode = require('qr-image');
-const QRImage = require('qr-image')
 const xlsx = require ('xlsx');
-const cloudinary = require('cloudinary');
-const axios = require('axios').default
-const rzp = require('razorpay')
+const axios = require('axios').default;
 const nodemailer = require('nodemailer');
 const inlineCss = require('inline-css');
-const crypto = require('crypto');
-const moment = require('moment')
-const QUERY_URL = 'https://data.saarang.org/v1/query';
-const AUTH_URL = 'https://auth.saarang.org/v1/user/info'
-const ADMIN_TOKEN = "e76047282b717ef9925649b38d1d8498698bb5aa98379114";
-const admin_headers={
-    headers:{
-        'Authorization':`Bearer ${ADMIN_TOKEN}`
-    }
-}
+
 var sent_mails = []
 
 var rows = []
