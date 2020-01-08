@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="https://www.saarang.org/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style type="text/css">
+    * {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .bg {
+        padding: 10px;
+        background: #8f8780;
+    }
+
+    .fg {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 5px;
+        background: #f5f2ef;
+    }
+
+    .ticket-header h3 {
+        display: block;
+        padding: 5px;
+        color: #604939;
+        margin: auto;
+        font-weight: 700;
+    }
+
+    .ticket-short-desc {
+        text-align: center;
+        font-size: 8pt;
+    }
+
+    #logo {
+        padding: 5px;
+        height: 150px;
+        display: block;
+        margin: auto;
+    }
+
+    #qr {
+        padding: 5px;
+        height: 200px;
+        display: block;
+        margin: auto;
+    }
+
+    .line {
+        height: 2px;
+        background: #8f8780;
+        width: 100%;
+    }
+
+    .table {
+        margin: 5px;
+        font-size: 10pt;
+    }
+
+    .thead-class {
+        background-color: #604939;
+        color: #fff;
+    }
+
+    .linkesh {
+        color: #503d30;
+    }
+
+    a:hover {
+        color: #30251d;
+    }
+
+    .footer {
+        margin: 5px;
+    }
+
+    .footer .fa {
+        font-size: 20pt;
+        width: 40px;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        background-color: transparent;
+        color: #503d30;
+    }
+
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+    .ticket-holder-deets {
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .tnc {
+        border: 3px solid #604939;
+        margin: 5px;
+        padding: 5px;
+        font-size: 8pt;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="bg">
+            <div class="fg">
+                <center><img id="logo" src="cid:logo@saarang" /></center>
+                <div class="line"></div>
+                <div class="container">
+                    <div class="ticket-header row">
+                        <h3>Tshirts</h3>
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col"><img id="qr" src="cid:qrcode@saarang"></div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col">
+                            <table class="table table-sm">
+                                <thead class="thead-class">
+                                    <tr>
+                                        <th scope="col">T-shirt</th>
+                                        <th scope="col">Size</th>
+                                        <th scope="col">#</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%  
+                                        Object.keys(tshirt_data).forEach(tshirt_name => {
+                                        let first = 0;
+                                            Object.keys(tshirt_data[tshirt_name]).forEach(type=>{
+                                                if(tshirt_data[tshirt_name][type] > 0){
+                                            
+                                        %>
+                                    <tr>
+                                        <td><%= tshirt_name %></td>
+                                        <td><%=type.toUpperCase()%></td>
+                                        <td><%=tshirt_data[tshirt_name][type]%></td>
+                                    </tr>
+                                    <% }})}) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket-holder-deets">
+                    <strong>Order ID: </strong> <%=order_id %> <br>
+                    <strong>Saarang ID: </strong> <%=saarang_id %> <br>
+                </div>
+
+
+            </div>
+            <div class="footer">
+                <center>
+                    <!-- You can also see the QR code in our <a
+                        href="https://play.google.com/store/apps/details?id=org.saarang.app&hl=en_IN">official app</a>.
+                    <br>
+                    <a href="https://play.google.com/store/apps/details?id=org.saarang.app&hl=en_IN">
+                        <img src="https://www.google.com/intl/en-IN/cast/about/static/images/download-badges/android-download.png"
+                            style="max-width: 20%">
+                    </a>
+                    <br>
+                    <br> -->
+                    <center style="font-size:9pt;">
+                        <p style="margin: 0; "> Follow Saarang on: </p>
+                        <a href="https://www.saarang.org/" class="linkesh">Official Website</a> |
+                        <a href="https://www.facebook.com/saarangiitm/" class="linkesh">Facebook</a> |
+                        <a href="https://www.instagram.com/saarang_iitmadras" class="linkesh">Instagram</a>
+                    </center>
+                </center>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
