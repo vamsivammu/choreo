@@ -16,8 +16,8 @@ function send_emails_rec(index){
         return
     }
     var roll_num = rows[index].roll_num;
-    var name = roll_num.split("@")[0];
-    var email = roll_num.toLowerCase()
+    var name = rows[index].name;
+    var email = roll_num.toLowerCase() + "@smail.iitm.ac.in"
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
