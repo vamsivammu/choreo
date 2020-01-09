@@ -32,6 +32,9 @@ var get_proshow_transactions = {
                     "signature": {
                         "$ne": null
                     }
+                },
+                "confirmed": {
+                    "$eq": 1
                 }
             ]
         },

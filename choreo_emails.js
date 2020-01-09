@@ -29,7 +29,7 @@ function send_emails_rec(index){
     let html_src = ejs.render(fs.readFileSync(__dirname + '/views/ikollege.ejs', 'utf8'), {
        roll_no: roll_num,
        name: name,
-       type: rows[index].gallery !== null ? 'Gallery' : 'Chair'
+       type: rows[index].gallery != '' && rows[index].gallery != undefined && rows[index].gallery != null ? 'Gallery' : 'Chair'
     });
 
     inlineCss(html_src, { url: ' ', applyTableAttributes: true })
@@ -38,7 +38,7 @@ function send_emails_rec(index){
                 {
                     to: email,
                     from: 'Saarang 2020',
-                    subject: 'Saarang 2020 Proshows ticket ' + roll_num,
+                    subject: 'Updated Saarang 2020 Proshows ticket ' + roll_num,
                     html: html
                 },
                 function (error, info) {
@@ -56,6 +56,10 @@ function send_emails_rec(index){
 var file = xlsx.readFile('Choreo.xlsx')
 var sheetnames = file.SheetNames
 rows = xlsx.utils.sheet_to_json(file.Sheets[sheetnames[0]])
+// rows.forEach(row=>{
+//     console.log(row.gallery != undefined ? 'Gallery' : 'Chair')
+// })
+// console.log(rows.gallery)
 // console.log(rows)
 send_emails_rec(0)
 
