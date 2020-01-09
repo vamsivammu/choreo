@@ -29,7 +29,7 @@ function send_emails_rec(index){
     let html_src = ejs.render(fs.readFileSync(__dirname + '/views/ikollege.ejs', 'utf8'), {
        roll_no: roll_num,
        name: name,
-       type: 'Gallery'
+       type: rows[index].gallery !== null ? 'Gallery' : 'Chair'
     });
 
     inlineCss(html_src, { url: ' ', applyTableAttributes: true })
@@ -50,7 +50,7 @@ function send_emails_rec(index){
                         send_emails_rec(index + 1)
                     }
                 })
-        });
+        }).catch(e=> console.log("Failed email: " + roll_num));
 }
 
 var file = xlsx.readFile('Choreo.xlsx')
