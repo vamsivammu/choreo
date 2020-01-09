@@ -142,9 +142,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%  ticket_table_data.sort((a,b)=>{
-                                            return new Date(a.datetime) - new Date(b.datetime);
-                                        })
+                                    <%  
                                         ticket_table_data.forEach(proshow => {
                                         console.log(proshow)
                                         var types = Object.keys(proshow.qtys);
@@ -155,7 +153,7 @@
                                     <tr>
                                         <% if(first == 0){ first=1%>
                                         <td rowspan="<%= types.length%>">
-                                            <%= proshow.name%><br><%= new Date(proshow.datetime).toLocaleString("en-IN", {month:"short", weekday: "short", day:"numeric", hour:"numeric", minute:"numeric"}) %>
+                                            Choreo Night<br>9th Jan, 6:00pm
                                         </td>
                                         <%}%>
                                         
@@ -174,15 +172,14 @@
                 </div>
                 <div class="ticket-short-desc">
                     This is your pass for Saarang 2020 Proshows. You need to produce this pass at the Security Gate
-                    to
-                    enter the event venue.
+                    to enter the event venue.
                 </div>
                 <div class="tnc">
                     <strong>Terms & Conditions:</strong>
                     <ol>
                         <li>Pass is non-transferable and non-refundable. Only the number of people specified in the
-                            pass
-                            will be let in.</li>
+                            pass will be let in.</li>
+                        <li>Any misuse of this ticket is a punishable offense and if found guilty you will be charged with a fine of Rs. 10,000 and up to 2 years of imprisonment.</li>
                         <li>Saarang is not responsible for your belongings in the event.</li>
                         <li>Food and beverages are not included with this pass.</li>
                         <li>Saarang has the right to revoke the pass in case of misdemeanor by the holder(s).</li>
