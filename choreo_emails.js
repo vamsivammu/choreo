@@ -10,6 +10,15 @@ var sent_mails = []
 var rows = []
 
 
+function getType(row){
+    if(row.fan_pass != undefined && row.fan_pass != null && row.fan_pass.trim() != '')
+        return 'Fan Pass';
+    else if(row.bowl != undefined && row.bowl != null && row.bowl.trim() != '')
+        return 'Bowl'
+    else 
+        return 'Gallery'
+}   
+
 function send_emails_rec(index){
     if(index >= rows.length){
         console.log('done')
@@ -29,7 +38,7 @@ function send_emails_rec(index){
     let html_src = ejs.render(fs.readFileSync(__dirname + '/views/ikollege.ejs', 'utf8'), {
        roll_no: roll_num,
        name: name,
-       type: rows[index].gallery != '' && rows[index].gallery != undefined && rows[index].gallery != null ? 'Gallery' : 'Chair'
+       type: getType(rows[index])
     });
 
     inlineCss(html_src, { url: ' ', applyTableAttributes: true })
@@ -53,7 +62,7 @@ function send_emails_rec(index){
         }).catch(e=> console.log("Failed email: " + roll_num));
 }
 
-var file = xlsx.readFile('Choreo.xlsx')
+var file = xlsx.readFile('Choreo.xlsx') ///TODOOOOOO: CHange this
 var sheetnames = file.SheetNames
 rows = xlsx.utils.sheet_to_json(file.Sheets[sheetnames[0]])
 // rows.forEach(row=>{
@@ -62,4 +71,3 @@ rows = xlsx.utils.sheet_to_json(file.Sheets[sheetnames[0]])
 // console.log(rows.gallery)
 // console.log(rows)
 send_emails_rec(0)
-
