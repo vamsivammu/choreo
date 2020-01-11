@@ -14,6 +14,25 @@ var sent_mails = []
 var rows = []
 
 
+function getType(row){
+    if(row.fan_pass != undefined && row.fan_pass != null && row.fan_pass != '')
+        return 'Fan Pass';
+    else if(row.bowl != undefined && row.bowl != null && row.bowl != '')
+        return 'Bowl'
+    else 
+        return 'Gallery'
+}   
+
+function getNum(row){
+     if(row.fan_pass != undefined && row.fan_pass != null && row.fan_pass != '')
+        return row.fan_pass;
+    else if(row.bowl != undefined && row.bowl != null && row.bowl != '')
+        return row.bowl
+    else 
+        return row.gallery
+}
+
+
 function send_emails_rec(index){
     if(index >= rows.length){
         console.log('done')
@@ -31,7 +50,7 @@ function send_emails_rec(index){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'saarang-proshows-10@saarang.org',
+            user: 'saarang-proshows-10@saarang.org', /// CHANGE THIS
             pass: 'saarang123',
         }
     });
@@ -40,13 +59,12 @@ function send_emails_rec(index){
     var qr_png = QRCode.image(JSON.stringify({hasura_id:parseInt(hasura_id), signature:signature.toString()}), { type: 'png' });
     qr_png.pipe(fs.createWriteStream(__dirname + `/views/temp/${order_id}.png`));
 
-    ///////////////CHANGE//////////////
     let html_src = ejs.render(fs.readFileSync(__dirname + '/views/proshow_ticket.ejs', 'utf8'), {
        // roll_no: roll_num,
        saarang_id: saarang_id,
        order_id: order_id,
        num: rows[index].gallery != '' && rows[index].gallery != undefined && rows[index].gallery != null ? rows[index].gallery : rows[index].chair,
-       type: rows[index].gallery != '' && rows[index].gallery != undefined && rows[index].gallery != null ? 'Gallery' : 'Chair'
+       type: getType(rows[index])
     });
 
     inlineCss(html_src, { url: ' ', applyTableAttributes: true })
@@ -98,5 +116,5 @@ rows = xlsx.utils.sheet_to_json(file.Sheets[sheetnames[0]])
 // })
 // console.log(rows.gallery)
 // console.log(rows)
-send_emails_rec(244) // CHANGE THIS~+!!!!!
+send_emails_rec(0) // CHANGE THIS~+!!!!!
 

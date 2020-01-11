@@ -11,9 +11,9 @@ var rows = []
 
 
 function getType(row){
-    if(row.fan_pass != undefined && row.fan_pass != null && row.fan_pass.trim() != '')
+    if(row.fan_pass != undefined && row.fan_pass != null && row.fan_pass != '')
         return 'Fan Pass';
-    else if(row.bowl != undefined && row.bowl != null && row.bowl.trim() != '')
+    else if(row.bowl != undefined && row.bowl != null && row.bowl != '')
         return 'Bowl'
     else 
         return 'Gallery'
@@ -30,7 +30,7 @@ function send_emails_rec(index){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'saarang-proshows-5@saarang.org',
+            user: 'saarang-proshows-5@saarang.org', /// CHANGE THISSS!!!!!!!
             pass: 'saarang123',
         }
     });
