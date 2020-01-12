@@ -15,22 +15,26 @@ var rows = []
 
 
 function getType(row){
-    if(row.fan_pass != undefined && row.fan_pass != null && row.fan_pass != '')
-        return 'Fan Pass';
-    else if(row.bowl != undefined && row.bowl != null && row.bowl != '')
-        return 'Bowl'
-    else 
+    if(row.platinum != undefined && row.platinum != null && row.platinum != '')
+        return 'Platinum Chair';
+    else if(row.gold != undefined && row.gold != null && row.gold != '')
+        return 'Gold Chair'
+    else if(row.silver != undefined && row.silver != null && row.silver != '')
+        return'Silver Chair'
+    else
         return 'Gallery'
 }   
 
 function getNum(row){
-     if(row.fan_pass != undefined && row.fan_pass != null && row.fan_pass != '')
-        return row.fan_pass;
-    else if(row.bowl != undefined && row.bowl != null && row.bowl != '')
-        return row.bowl
-    else 
+    if(row.platinum != undefined && row.platinum != null && row.platinum != '')
+        return row.platinum ;
+    else if(row.gold != undefined && row.gold != null && row.gold != '')
+        return row.gold
+    else if(row.silver != undefined && row.silver != null && row.silver != '')
+        return row.silver
+    else
         return row.gallery
-}
+}   
 
 
 function send_emails_rec(index){

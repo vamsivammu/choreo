@@ -108,6 +108,7 @@
     .ticket-holder-deets {
         margin: 5px;
         padding: 5px;
+        font-size: 1.5em;
     }
 
     .tnc {
@@ -122,17 +123,14 @@
     <div class="container">
         <div class="bg">
             <div class="fg">
-                <center><img id="logo" src="cid:logo@saarang" /></center>
+                <center><img id="logo" src="https://res.cloudinary.com/saarang2017/image/upload/f_auto,fl_lossy,q_auto/v1578478991/logo_x8nf4z.png" /></center>
                 <div class="line"></div>
                 <div class="container">
                     <div class="ticket-header row">
                         <h3>Proshows Pass</h3>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col"><img id="qr" src="cid:qrcode@saarang"></div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col"><img id="gif" src="https://res.cloudinary.com/saarang2017/image/upload/v1578722512/4093243_hh99zm.gif"></div>
+                        <div class="col"><img id="qr" src="https://res.cloudinary.com/saarang2017/image/upload/v1578722512/4093243_hh99zm.gif" style="pointer-events: none;"></div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col">
@@ -148,9 +146,9 @@
                                     <tr>
                                         <td>
                                             Pop Night - 12th Jan, 6:30pm
-                                        </td>                                        
-                                        <td><%=type%></td>
-                                        <td><%=num%></td>
+                                        </td>
+                                        <td><%= type %></td>
+                                        <td>1</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -158,20 +156,19 @@
                     </div>
                 </div>
                 <div class="ticket-holder-deets">
-                    <strong>Order ID: </strong> <%=order_id %> <br>
                     <strong>Saarang ID: </strong> <%=saarang_id %> <br>
+                    <strong>Name: </strong> <%=name %> <br>
                 </div>
                 <div class="ticket-short-desc">
                     This is your pass for Saarang 2020 Proshows. You need to produce this pass at the Security Gate
-                    to enter the event venue.
+                    to enter the event venue.<br>
                 </div>
                 <div class="tnc">
                     <strong>Terms & Conditions:</strong>
                     <ol>
                         <li>Pass is non-transferable and non-refundable. Only the number of people specified in the
                             pass will be let in.</li>
-                        <li>Any misuse of this ticket is a punishable offense and if found guilty you will be charged with a fine of Rs. 10,000 and up to 2 years of imprisonment.</li>
-                        <li>All members to be counted in the ticket head count must enter together.</li>
+                        <li>Any misuse of this ticket is a punishable offense and if found guilty, you will be charged with a fine of Rs. 10,000 and upto 2 years of imprisonment.</li>
                         <li>Saarang is not responsible for your belongings in the event.</li>
                         <li>Food and beverages are not included with this pass.</li>
                         <li>Saarang has the right to revoke the pass in case of misdemeanor by the holder(s).</li>
